@@ -9,14 +9,22 @@
     "build:production": "vite build --mode production",
     "preview": "vite preview",
     "deploy": "npm run build:production && wrangler pages deploy dist",
-    "deploy:preview": "wrangler pages deploy dist"
+    "deploy:preview": "wrangler pages deploy dist",
+    "db:migrate": "npx supabase db push",
+    "functions:deploy": "npx supabase functions deploy parental-consent-v2 && npx supabase functions deploy parental-approve-v2 && npx supabase functions deploy stripe-webhook-v2",
+    "test:e2e": "npx playwright test",
+    "test:coppa": "npx playwright test tests/compliance/coppa-compliance.spec.ts"
   },
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "@google/genai": "^1.30.0",
     "recharts": "^3.4.1",
-    "lucide-react": "^0.554.0"
+    "lucide-react": "^0.554.0",
+    "@supabase/supabase-js": "^2.49.2",
+    "@stripe/stripe-js": "^4.17.0",
+    "react-query": "^3.39.3",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
