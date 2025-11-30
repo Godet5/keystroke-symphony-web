@@ -7,10 +7,27 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
 dist
 dist-ssr
 *.local
+
+# Environment variables (CRITICAL - NO SECRETS IN GIT)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+*.key
+*.pem
+
+# API Keys & Secrets
+*_API_KEY*
+*secret*
+*SECRET*
+credentials.json
+token.json
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +39,25 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# OS files
+Thumbs.db
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Build artifacts
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
