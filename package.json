@@ -22,7 +22,7 @@
     "recharts": "^3.4.1",
     "lucide-react": "^0.554.0",
     "@supabase/supabase-js": "^2.49.2",
-    "@stripe/stripe-js": "^4.17.0",
+    "@stripe/stripe-js": "^8.5.0",
     "react-query": "^3.39.3",
     "zod": "^3.24.1"
   },
