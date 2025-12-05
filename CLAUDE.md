@@ -127,23 +127,35 @@ GEMINI_API_KEY=AIza...your-key...   # Encrypted, accessible only to Worker
 
 ## Deployment Architecture
 
+**Live Production URLs**:
+- Primary: https://keystroke-symphony-web.pages.dev
+- Project ID: `61ac69f5-eb5d-4d07-b77c-654169f7b6cf`
+- Account: DGF Creations Cloudflare
+
 ```
 User Browser
     ↓
-https://keystroke-symphony.dgf-creations.com (Cloudflare Pages)
+https://keystroke-symphony-web.pages.dev (Cloudflare Pages)
     ├── Static Assets (HTML/JS/CSS from /dist)
     └── Serverless Function (/api/gemini)
             ↓
         Cloudflare Worker (functions/api/gemini.ts)
             ↓
-        Google Gemini API (with encrypted GEMINI_API_KEY)
+        Google Gemini API (with KEYSTROKE_SYMPHONY_API_KEY)
 ```
 
 **GitHub Actions Workflow** (`.github/workflows/deploy.yml`):
 - Triggers on push to `main` or manual dispatch
-- Builds app (`npm run build`)
+- Builds app (`npm run build` with `--legacy-peer-deps`)
 - Deploys to Cloudflare Pages via `cloudflare/pages-action@v1`
 - Requires GitHub Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
+- Build time: ~43s | Status: Operational
+
+**Cloudflare Pages Configuration**:
+- Production branch: `main`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Environment variables: `GEMINI_API_KEY` (Keystroke Symphony specific key)
 
 ---
 
